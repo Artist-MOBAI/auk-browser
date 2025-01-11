@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Krona_One } from "next/font/google";
+import { Rosarivo, Tinos } from "next/font/google";
 import localfont from "next/font/local";
 import "./globals.css";
 
@@ -45,10 +45,17 @@ const vivoSans = localfont({
   variable: "--font-vivo-sans",
 });
 
-const kronaOne = Krona_One({
-  variable: "--font-krona-one",
+const rosarivo = Rosarivo({
+  variable: "--font-rosarivo",
   subsets: ["latin"],
   weight: "400",
+});
+
+const tinos = Tinos({
+  variable: "--font-tinos",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -64,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${kronaOne.variable} ${vivoSans.variable} antialiased no-select`}
+        className={`${rosarivo.variable} ${tinos.variable} ${vivoSans.variable} antialiased no-select`}
       >
         {children}
       </body>

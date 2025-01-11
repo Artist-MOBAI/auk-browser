@@ -12,12 +12,13 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         mobai: {
-          orange: "#E26528",
+          orange: "#FF7356",
         },
       },
       fontFamily: {
-        krona: ["var(--font-krona-one)"],
         vivo: ["var(--font-vivo-sans)"],
+        rosarivo: ["var(--font-rosarivo)"],
+        tinos: ["var(--font-tinos)"],
       },
     },
   },

@@ -1,7 +1,22 @@
 use tauri::{LogicalPosition, LogicalSize, WebviewUrl};
 
-#[cfg_attr(mobile, tauri::mobile_entry_point)]
+#[tauri::command]
+fn add_webview(window: tauri::Window) {
+    let width = 800.;
+    let height = 600.;
 
+    let _webview = window.add_child(
+        tauri::webview::WebviewBuilder::new(
+            "webview1",
+            WebviewUrl::External("https://bing.com".parse().unwrap()),
+        )
+        .auto_resize(),
+        LogicalPosition::new(256., 0.),
+        LogicalSize::new(width - 256., height),
+    );
+}
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
@@ -32,6 +47,7 @@ pub fn run() {
 
             Ok(())
         })
+        .invoke_handler(tauri::generate_handler![add_webview])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
